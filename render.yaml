@@ -1,0 +1,22 @@
+# render.yaml — نشر تلقائي على Render
+services:
+  - type: web
+    name: scraper-node
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_PANEL_URL
+        sync: false
+      - key: NODE_TOKEN
+        sync: false
+      - key: NODE_NAME
+        value: render-node
+      - key: NODE_INTERVAL
+        value: "60"
+      - key: NODE_BATCH
+        value: "40"
+      - key: NODE_CONCURRENCY
+        value: "8"
